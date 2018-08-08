@@ -55,9 +55,9 @@ stu(name1,age1,"我很帅","我有钱",hobby="男",addr="beijing",gender="mele")
 print("*"*50)
 
 v1=1;
-def fun1():
+def fun2():
     global v1
     v1+=1;
     print(v1)
     fun1()
-fun1()
+fun2()
