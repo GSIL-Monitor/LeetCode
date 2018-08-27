@@ -16,7 +16,7 @@ public class T10_1 {
 		Scanner sc = new Scanner(System.in);
 		String s1 = sc.nextLine();
 		String s2 = sc.nextLine();
-		sc.close();		
+		sc.close();	
 		boolean f = true;
 		int len = s2.length();
 		
