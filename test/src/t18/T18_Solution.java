@@ -4,41 +4,47 @@ import t17.ListNode;
 
 public class T18_Solution {
 	public ListNode insertionSortList(ListNode head) {
-		if(head.next == null) {
-			return head;
-		}
-		ListNode list = new  ListNode(0);
-		ListNode cur = new  ListNode(0);
-		list.next = head;
-		head = head.next;
-		list.next.next = null;
+
+
+		ListNode list = new ListNode(0);
+		ListNode cur = new ListNode(0);
 		
-		while(head != null) {
+
+
+		while (head != null) {
 			cur = head;
 			head = head.next;
-			
-			list.next = insert(list.next , cur);
-			}
+
+			list.next = insert(list.next, cur);
+		}
 		return list.next;
 	}
-	
-	public ListNode insert(ListNode list , ListNode n) {
-		ListNode prehead = list;
-		if (n.val < list.val) {
-			n.next = list;
+
+	public ListNode insert(ListNode head, ListNode n) {
+		ListNode prehead = head;
+		if( head == null) {
+			n.next = null;
 			return n;
-		} else {
-			while (list != null) {
-				if (list.val < n.val && (n.val <= list.next.val || list.next == null)) {
-					n.next = list.next;
-					list.next = n;
-					break;
-				}
-				list = list.next;
-				
-			}
-			return prehead;
 		}
+       if(n.val <= head.val) {
+    	   n.next = head;
+    	   return n;
+       }
+			
+		while (head.next != null) {		
+			if (n.val <= head.next.val) {
+				n.next = head.next;
+				head.next = n;
+				break;		
+				}
+			head = head.next;
+		}
+		if(head.next == null) {
+			head.next = n;
+			
+		}
+			return prehead;
+		
 
 	}
 
