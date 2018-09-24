@@ -6,8 +6,8 @@ public class T18_Solution {
 	public ListNode insertionSortList(ListNode head) {
 
 
-		ListNode list = new ListNode(0);
-		ListNode cur = new ListNode(0);
+		ListNode list = new ListNode(Integer.MIN_VALUE);
+		ListNode cur = new ListNode(Integer.MIN_VALUE);
 		
 
 
@@ -41,7 +41,7 @@ public class T18_Solution {
 		}
 		if(head.next == null) {
 			head.next = n;
-			
+			n.next = null;
 		}
 			return prehead;
 		
