@@ -1,4 +1,7 @@
-package t19;
+/**
+ * 
+ */
+package t20;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -7,10 +10,11 @@ import t14.TreeNode;
 
 /**
  * @author yukunlee
- *
+ * @Description binary-tree-postorder-traversal of non-recursion(iteration)
+ * @date 2018Äê9ÔÂ25ÈÕ
  */
-public class T19_Solution_2 {
-	public ArrayList<Integer> postorderTraversal(TreeNode root) {
+public class T20_Solution_1 {
+	public ArrayList<Integer> preorderTraversal(TreeNode root) {
 
 		ArrayList<Integer> arr = new ArrayList<>();
 		Stack<TreeNode> s = new Stack<>();
@@ -18,17 +22,18 @@ public class T19_Solution_2 {
 
 		while (!s.empty() || root != null) {
 			if (root != null) {
+				arr.add(root.val);
 				s.push(root);
 				root = root.left;
 			} else {
 				root = s.peek();
 				root = root.right;
 				if (root != null && root != tn) {
+					arr.add(root.val);
 					s.push(root);
 					root = root.left;
 				} else {
 					root = s.pop();
-					arr.add(root.val);
 					tn = root;
 					root = null;
 				}
@@ -37,5 +42,4 @@ public class T19_Solution_2 {
 
 		return arr;
 	}
-
 }

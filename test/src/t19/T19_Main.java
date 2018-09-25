@@ -16,6 +16,8 @@ public class T19_Main {
 		TreeNode n2 = new TreeNode(1);
 		TreeNode n3 = new TreeNode(2);
 		
+		TreeNode n4 = new TreeNode(3);
+		
 		n1.left = n2;
 		n1.right = n3 ;
 		
