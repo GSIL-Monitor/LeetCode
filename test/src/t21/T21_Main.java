@@ -2,10 +2,11 @@ package t21;
 
 import t17.ListNode;
 
+
 /**
  * @author yukunlee
- * @Description Given a singly linked list L: L 0¡úL 1¡ú¡­¡úL n-1¡úL n,reorder it to: L 0¡úL n ¡úL 1¡úL n-1¡úL 2¡úL n-2¡ú¡­
- * @date 2018Äê9ÔÂ27ÈÕ
+ * @Description Given a singly linked list L: L 0â†’L 1â†’â€¦â†’L n-1â†’L n,reorder it to: L 0â†’L n â†’L 1â†’L n-1â†’L 2â†’L n-2â†’â€¦
+ * @date 2018å¹´9æœˆ27æ—¥
  */
 public class T21_Main {
 

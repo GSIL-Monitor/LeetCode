@@ -4,10 +4,11 @@ import java.util.Stack;
 
 import t17.ListNode;
 
+
 /**
  * @author yukunlee
- * @Description Given a singly linked list L: L 0¡úL 1¡ú¡­¡úL n-1¡úL n,reorder it to: L 0¡úL n ¡úL 1¡úL n-1¡úL 2¡úL n-2¡ú¡­
- * @date 2018Äê9ÔÂ27ÈÕ
+ * @Description TODO
+ * @date 2018å¹´9æœˆ27æ—¥
  */
 public class T21_Solution_1 {
 	public void reorderList(ListNode head) {
