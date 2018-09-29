@@ -37,7 +37,7 @@ public class T23_Solution {
 	}
 
 	private ArrayList<String> recursion(String s , int index , Set<String> dict , ArrayList<String> str){
-		for(int i = index ; i <= s.length() ; ++i) {
+		for(int i = index+1 ; i <= s.length() ; ++i) {
 			if(dict.contains(s.substring(index, i))){
 				str.add(s.substring(index, i));
 				recursion(s, i, dict, str);

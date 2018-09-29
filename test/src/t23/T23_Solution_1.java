@@ -39,9 +39,9 @@ public class T23_Solution_1 {
 
 	private ArrayList<String> recursion(String s , int index , Set<String> dict , ArrayList<String> str){
 		Stack<String> st = isContains(s, dict , index);
-		while(!st.isEmpty()) {
+		while(!st.empty()) {
 				str.add(st.peek());
-				index = s.indexOf(st.peek()+st.pop().length());
+				index = s.indexOf(st.peek())+st.pop().length();
 				recursion(s, index,dict, str);
 		}
 		return str;
@@ -51,9 +51,8 @@ public class T23_Solution_1 {
 		for(String str : dict) {
 			if(s.startsWith(str , index)) {
 				st.push(str);
-				return st;
 			}
 		}
-		return null;
+		return st;
 	}
 }
