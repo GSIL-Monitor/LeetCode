@@ -21,10 +21,10 @@ public class T23_Main {
 		String s1 = "abc";
 		Set<String> dict1 = new TreeSet<>();
 		
-//		T23_Solution sol = new T23_Solution();
-//		ret = sol.wordBreak(s, dict);
-		T23_Solution_1 sol_1 = new T23_Solution_1();
-		ret = sol_1.wordBreak(s, dict);
+		T23_Solution sol = new T23_Solution();
+		ret = sol.wordBreak(s, dict);
+//		T23_Solution_1 sol_1 = new T23_Solution_1();
+//		ret = sol_1.wordBreak(s, dict);
 		
 		for(String str : ret) {
 			System.out.println(str);
