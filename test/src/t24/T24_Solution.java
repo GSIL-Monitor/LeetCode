@@ -36,6 +36,28 @@ public class T24_Solution {
 		}
 		return false;
 	}
+	/**
+	 * @author yukunlee
+	 * @Description dp
+	 * @date 2018年9月30日
+	 * @param s
+	 * @param dict
+	 * @return
+	 */
+	public boolean wordBreakDP(String s, Set<String> dict) {
+		int len = s.length();
+		boolean[] arr= new boolean[len + 1];
+		arr[0] = true;
+		for(int i = 1 ; i <= len ; ++i) {
+			for(int j = 0 ; j < i ; ++j) {
+				if(arr[j] && dict.contains(s.substring(j, i))) {
+					arr[i] = true ;
+					break;
+				}
+			}
+		}
+		return arr[len];
+	}
 	
 	/**
 	 * @author yukunlee
