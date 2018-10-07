@@ -64,7 +64,6 @@ public class T27_Solution {
 		}
 
 		int[] count = new int[ratings.length];
-		// 每个孩子初始都有一个糖果
 		Arrays.fill(count, 1);
 		int sum = 0;
 		for (int i = 1; i < ratings.length; i++) {
