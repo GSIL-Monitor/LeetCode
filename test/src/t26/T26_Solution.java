@@ -6,7 +6,15 @@ package t26;
  * @date 2018年10月6日
  */
 public class T26_Solution {
-		public int singleNumber(int[] A) {
+		/**
+		 * @author yukunlee
+		 * @Description Given an array of integers, every element appears three times except for one. 
+		 * Find that single one.
+		 * @date 2018年10月6日
+		 * @param A
+		 * @return
+		 */
+		public int singleNumber2(int[] A) {
 		        int ones = 0;//记录只出现过1次的bits
 		        int twos = 0;//记录只出现过2次的bits
 		        int threes;
@@ -20,4 +28,19 @@ public class T26_Solution {
 		        }
 		        return ones; 
 		    }
+		/**
+		 * @author yukunlee
+		 * @Description Given an array of integers, every element appears twice except for one. 
+		 * Find that single one.
+		 * @date 2018年10月6日
+		 * @param A
+		 * @return
+		 */
+		public  int singleNumber(int[] A) {
+		    int num = 0;
+		    for(int i=0;i<A.length;i++){
+		        num^=A[i];
+		    }
+		    return num;
+		}
 }
