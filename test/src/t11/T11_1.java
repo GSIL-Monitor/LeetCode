@@ -2,6 +2,11 @@ package t11;
 
 
 import java.util.Scanner;
+/**
+ * @author yukunlee
+ * @Description TODO
+ * @date 2018å¹´10æœˆ11æ—¥
+ */
 public class T11_1 {
   
     public static void main(String[] args) {
@@ -15,15 +20,15 @@ public class T11_1 {
                 System.out.println("Dislikes");
         }
     }
-    //Ìõ¼þ1
+    //ï¿½ï¿½ï¿½ï¿½1
      public static boolean isAllUpCase(String word){
         return word.matches("[A-Z]+");
     }
-    //Ìõ¼þ2
+    //ï¿½ï¿½ï¿½ï¿½2
     public static boolean isConEql(String word){
         return !word.matches(".*(.)(\\1).*");
     }
-    //Ìõ¼þ3
+    //ï¿½ï¿½ï¿½ï¿½3
     public static boolean isThrEql(String word){
         return !word.matches(".*(.).*(.)(.*\\1)(.*\\2).*");
     }

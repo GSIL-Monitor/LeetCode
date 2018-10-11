@@ -2,6 +2,11 @@ package t1;
 
 import java.util.Arrays;
 
+/**
+ * @author yukunlee
+ * @Description TODO
+ * @date 2018年10月11日
+ */
 public class t3 {
 
 	public static void main(String[] args) {

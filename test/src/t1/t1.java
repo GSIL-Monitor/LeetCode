@@ -1,5 +1,10 @@
 package t1;
 
+/**
+ * @author yukunlee
+ * @Description TODO
+ * @date 2018年10月11日
+ */
 public class t1 {
 
 	public static void main(String[] args) {
