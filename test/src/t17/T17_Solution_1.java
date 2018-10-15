@@ -1,6 +1,11 @@
 package t17;
 
 
+/**
+ * @author yukunlee
+ * @Description TODO
+ * @date 2018年10月15日
+ */
 public class T17_Solution_1 {
 	public ListNode  sortList(ListNode head) {
 		if(head == null || head.next == null) {

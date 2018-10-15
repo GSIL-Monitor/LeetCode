@@ -1,7 +1,11 @@
 package t17;
 
 
-// µ¥Á´±íµÄ¿ìËÙÅÅĞò Ê±¼ä¸´ÔÓ¶ÈO(nlogn),¿Õ¼ä¸´ÔÓ¶ÈO(1)
+/**
+ * @author yukunlee
+ * @Description TODO
+ * @date 2018å¹´10æœˆ15æ—¥
+ */
 public class T17_Solution {
     public ListNode sortList(ListNode head) {
         quickSort(head, null);

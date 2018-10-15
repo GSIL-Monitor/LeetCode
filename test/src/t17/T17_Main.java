@@ -4,6 +4,12 @@ import t14.TreeNode;
 
 public class T17_Main {
 
+	/**
+	 * @author yukunlee
+	 * @Description TODO
+	 * @date 2018年10月15日
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ListNode preHead = new ListNode(0),  cur = preHead;
