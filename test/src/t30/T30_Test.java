@@ -2,7 +2,9 @@ package t30;
 
 import java.util.ArrayList;
 import java.util.Stack;
-import java.util.Vector;  
+import java.util.Vector;
+
+import net.sf.json.JSONArray;  
 
 public class T30_Test {
 
@@ -24,12 +26,14 @@ public class T30_Test {
 		
 		String s = "abba";
 		ArrayList<ArrayList<String>> result = sol.partition(s);
-		for(ArrayList<String> a : result) {
+	/*	for(ArrayList<String> a : result) {
 			for(String str : a) {
 				System.out.print(str+",");
 			}
 			System.out.print("|");
-		}
+		}*/
+		JSONArray js = JSONArray.fromObject(result);
+		System.out.println(js.toString());
 		
 		Vector<String> v = new Vector<>();
 		Stack<String> st = new Stack<>();
