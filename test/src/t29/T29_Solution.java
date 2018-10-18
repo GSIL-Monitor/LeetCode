@@ -13,7 +13,7 @@ import java.util.Queue;
 public class T29_Solution {
 	/**
 	 * @author yukunlee
-	 * @Description DFS
+	 * @Description DFS for traversing graph
 	 * @date 2018年10月16日
 	 * @param node
 	 * @return
@@ -42,7 +42,7 @@ public class T29_Solution {
 
 	/**
 	 * @author yukunlee
-	 * @Description BFS
+	 * @Description BFS for traversing graph
 	 * @date 2018年10月16日
 	 * @param node
 	 * @return
