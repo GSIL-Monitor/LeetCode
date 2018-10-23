@@ -5,7 +5,6 @@ public class T31_Solution {
 	private int colnum = 0;
 
 	public void solve(char[][] board) {
-<<<<<<< HEAD
 		if (board == null || board.length == 0 || board[0].length == 0) {
 			return;
 		}
@@ -28,9 +27,6 @@ public class T31_Solution {
 				if (board[i][j] == '*')board[i][j] = 'O';
 			}
 		}
-=======
-		int a  = 1;
->>>>>>> 85f388c971fd68875a28671dbd122becf77b3335
 
 	}
 
