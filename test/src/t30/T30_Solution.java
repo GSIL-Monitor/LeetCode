@@ -102,4 +102,17 @@ public class T30_Solution {
 		}
 		return true;
 	}
+	 public boolean isPalindrome2(String s) {
+		 if(s == null)return true;
+		 s = s.replaceAll("\\W", "");
+		 s = s.toLowerCase();
+		 int len = s.length();
+			int mid = len / 2;
+			for (int i = 0; i < mid; ++i) {
+				if (s.charAt(i) != s.charAt(len - i - 1)) {
+					return false;
+				}
+			}
+		 return true;
+	 }
 }
