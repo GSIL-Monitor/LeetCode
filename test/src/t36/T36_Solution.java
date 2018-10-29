@@ -1,12 +1,13 @@
 package t36;
 
-/**
- * @author yukunlee
- * @Description best-time-to-buy-and-sell-stock-iii
- * @date 2018年10月25日
- */
+
 public class T36_Solution {
-	public int maxProfit(int[] prices) {
+	/**
+	 * @author yukunlee
+	 * @Description best-time-to-buy-and-sell-stock-iii
+	 * @date 2018年10月25日
+	 */
+	public int maxProfit3(int[] prices) {
 		int len = prices.length;
 		int buy1 = Integer.MIN_VALUE,sell1= 0, buy2= Integer.MIN_VALUE, sell2 = 0;
 		for(int i = 0 ; i < len ;++i) {
@@ -17,4 +18,22 @@ public class T36_Solution {
 		}
 		return sell2;
 	}
+	
+	/**
+	 * @author yukunlee
+	 * @Description best-time-to-buy-and-sell-stock-ii
+	 * @date 2018年10月29日
+	 * @param prices
+	 * @return
+	 */
+	public int maxProfit1(int[] prices) {
+		int buy = Integer.MIN_VALUE, sell = 0;
+		int len = prices.length;
+		for(int i = 0 ; i < len ; ++i) {
+			buy = Math.max(buy, -prices[i]);
+			sell = Math.max(buy, sell + buy);
+		}
+		return sell;	
+	}
+	
 }
