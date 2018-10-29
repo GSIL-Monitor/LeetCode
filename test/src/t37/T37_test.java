@@ -1,5 +1,6 @@
 package t37;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -11,35 +12,35 @@ public class T37_test {
 		Queue<Integer> q = new LinkedList<>();
 		q.offer(0);
 		int len = flights.length;
-		while(!q.isEmpty()) {
-			//int start = q.remove();
+		while (!q.isEmpty()) {
+			// int start = q.remove();
 			int start = q.poll();
-			for(int i = 0 ; i < len ; ++i) {
-				if(flights[i][0] == start) {
+			for (int i = 0; i < len; ++i) {
+				if (flights[i][0] == start) {
 					q.offer(flights[i][1]);
 				}
 			}
 		}
 		return res;
 	}
-	
-	static int cheapest(int plane,int city,int sum, int[][] flights) {
+
+	static int cheapest(int plane, LinkedList<Integer> city, int sum, int[][] flights) {
 		int len = flights.length;
 		int min = Integer.MAX_VALUE;
-		if(city == 1) {
+		if (city.peek() == 1) {
 			return 0;
 		}
-		for(int i = 0 ; i < len ; ++i) {
-			if(flights[i][0] == city) {
-				city = flights[i][1];
-				if(plane == flights[i][2]) {
-					sum = Math.round(flights[i][3]*7/10)+cheapest(plane, city, sum, flights);
+		for (int i = 0; i < len; ++i) {
+			if (flights[i][0] == city.peek() && !city.contains(flights[i][0])) {
+				city.add(flights[i][1]);
+				if (plane == flights[i][2]) {
+					sum = Math.round(flights[i][3] * 7 / 10) + cheapest(plane, city, sum, flights);
 					min = Math.max(min, sum);
-				}else {
+				} else {
 					plane = flights[i][2];
-					sum = flights[i][3]+cheapest(plane, city, sum, flights);
+					sum = flights[i][3] + cheapest(plane, city, sum, flights);
 					min = Math.max(min, sum);
-				}		
+				}
 			}
 		}
 		return min;
@@ -72,8 +73,13 @@ public class T37_test {
 			in.nextLine();
 		}
 
-		//res = find_cheapest_path(_n, _m, _flights);
-		res = cheapest(_n, 0, 0, _flights);
+		//ArrayList<Integer> arr = new ArrayList<>();
+		LinkedList<Integer> lin = new LinkedList<>();
+		lin.add(0);
+
+
+		// res = find_cheapest_path(_n, _m, _flights);
+		res = cheapest(_n, lin, 0, _flights);
 		System.out.println(String.valueOf(res));
 
 	}
