@@ -1,7 +1,7 @@
 package t38;
 
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.Stack;
 
 /**
  * @author yukunlee
@@ -53,8 +53,10 @@ public class T38_Solution {
 	 * @return
 	 */
 	public int minimumTotal_3(ArrayList<ArrayList<Integer>> triangle) {
-
-		return 0;
+		return DFS(triangle, 0, 0);
+	}
+	private int DFS(ArrayList<ArrayList<Integer>> triangle , int i , int j) {
+		return i == triangle.size()-1? triangle.get(i).get(j):triangle.get(i).get(j)+ Math.min(DFS(triangle , i+1 ,j), DFS(triangle, i+1 ,j+1));
 	}
 
 	/**
@@ -65,6 +67,19 @@ public class T38_Solution {
 	 * @return
 	 */
 	public int minimumTotal_4(ArrayList<ArrayList<Integer>> triangle) {
+		Stack<Integer> st = new Stack<>();
+		int i = 0 , j = 0, sum = 0, len = triangle.size();
+		st.push(triangle.get(i).get(j));
+		sum += triangle.get(i).get(j);
+		while(!st.isEmpty()) {
+			if(i == len-1) {
+				
+			}
+			st.push(triangle.get(i+1).get(j));
+			sum += triangle.get(i+1).get(j);
+			
+			
+		}
 
 		return 0;
 	}
