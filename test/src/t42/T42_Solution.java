@@ -1,5 +1,7 @@
 package t42;
 
+import java.util.ArrayList;
+
 import t14.TreeNode;
 
 public class T42_Solution {
@@ -27,5 +29,43 @@ public class T42_Solution {
 		return recursion(root.left, sum, count) || recursion(root.right, sum, count);
 
 	}
+	
+    /**
+     * @author yukunlee
+     * @Description path-sum-ii
+     * @date 2018年11月1日
+     * @param root
+     * @param sum
+     * @param count
+     * @param li
+     * @return
+     */
+	private ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
+    	ArrayList<Integer> li = new ArrayList<>();
+    	recursion(root, sum, 0, li);
+		return res;
+    }
+    public ArrayList<Integer> recursion(TreeNode root, int sum, int count, ArrayList<Integer> li ) {
+		if (root == null) {
+			return  li;
+		}
+		if(root.left == null && root.right == null) {
+			count += root.val;
+			if(sum == count) {
+				li.add(root.val);
+				res.add(new ArrayList<>(li));
+				li.remove(li.size()-1);
+			}
+			return li;
+		}
+		count += root.val;
+		li.add(root.val);
+		recursion(root.left, sum, count, li);
+		recursion(root.right, sum, count, li);
+		li.remove(li.size()-1);
+
+		return li;
+    }
 
 }
