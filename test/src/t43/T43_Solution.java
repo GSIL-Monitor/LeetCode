@@ -1,6 +1,7 @@
 package t43;
 
 import t14.TreeNode;
+import t17.ListNode;
 
 public class T43_Solution {
     /**
@@ -17,6 +18,44 @@ public class T43_Solution {
     }
     private int treeHight(TreeNode root) {
     	return root == null? 1:Math.max(treeHight(root.left), treeHight(root.right))+1;
+    }
+    
+    /**
+     * @author yukunlee
+     * @Description convert-sorted-list-to-binary-search-tree
+     * @date 2018年11月1日
+     * @param head
+     * @return
+     */
+    public TreeNode sortedListToBST(ListNode head) {
+    	
+    	
+        return null;
+    }
+    
+    /**
+     * @author yukunlee
+     * @Description convert-sorted-array-to-binary-search-tree
+     * @date 2018年11月1日
+     * @param num
+     * @return
+     */
+    public TreeNode sortedArrayToBST(int[] num) {
+    	if(num.length ==0) {
+    		return null;
+    	}
+    	return BST(num, 0, num.length-1);
+    }
+    private TreeNode BST(int[] num, int start, int end) {
+    	if(start > end) {
+    		return null;
+    	}
+    	int mid = (end + start +1)>>1;
+    	TreeNode root = new TreeNode(num[mid]);
+    	root.left = BST(num, start, mid-1);
+    	root.right = BST(num, mid+1, end);
+    	
+    	return root;
     }
 
 }
