@@ -28,21 +28,14 @@ public class T43_Solution {
      * @return
      */
     public TreeNode sortedListToBST(ListNode head) {
-    	ListNode tail = head;
-    	while(tail.next != null) {
-    		tail = tail.next;
-    	}
-    	tail.next = new ListNode(0);
-    	return toBST(head, tail);
+    	return toBST(head, null);
     
     }
     private TreeNode toBST(ListNode head, ListNode tail) {
     	if(head == tail) {
     		return null;
     	}
-    	ListNode  fast, slow;
-    	fast = head;
-    	slow = head;
+    	ListNode  fast = head, slow = head;
     	for(;fast!= tail && fast.next != tail;) {
     		slow = slow.next;
     		fast = fast.next.next;
