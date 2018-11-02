@@ -28,9 +28,29 @@ public class T43_Solution {
      * @return
      */
     public TreeNode sortedListToBST(ListNode head) {
-    	
-    	
-        return null;
+    	ListNode tail = head;
+    	while(tail.next != null) {
+    		tail = tail.next;
+    	}
+    	tail.next = new ListNode(0);
+    	return toBST(head, tail);
+    
+    }
+    private TreeNode toBST(ListNode head, ListNode tail) {
+    	if(head == tail) {
+    		return null;
+    	}
+    	ListNode  fast, slow;
+    	fast = head;
+    	slow = head;
+    	for(;fast!= tail && fast.next != tail;) {
+    		slow = slow.next;
+    		fast = fast.next.next;
+    	}
+    	TreeNode root = new TreeNode(slow.val);
+    	root.left = toBST(head , slow);
+    	root.right = toBST(slow.next , tail);  	
+        return root;
     }
     
     /**
