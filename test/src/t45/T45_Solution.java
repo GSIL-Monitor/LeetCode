@@ -61,5 +61,6 @@ public class T45_Solution {
     	if(mid != head) root.left = recursion_1(postorder, inorder, head,mid-1, last-1);
     	return root;
     }
+    
 
 }
