@@ -127,9 +127,13 @@ public class T46_Solution {
 	 * @param root
 	 * @return
 	 */
-	public boolean isSymmetric_recursion(TreeNode root) {
-		
-		return false;
+	public boolean isSymmetric_recursion(TreeNode root) {		
+		return isEqual(root, root);
+	}
+	private boolean isEqual(TreeNode left, TreeNode right) {
+		if(left == null && right == null) return true;
+		if((left == null && right != null)||left != null && right == null) return false;
+		return left.val == right.val && isEqual(left.left , right.right) && isEqual(left.right , right.left);
 	}
 
 	
