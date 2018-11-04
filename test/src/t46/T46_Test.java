@@ -9,7 +9,7 @@ public class T46_Test {
 		TreeNode n = new TreeNode(1);
 		n.left = new TreeNode(2);
 		T46_Solution t = new T46_Solution();
-		System.out.println(t.isSymmetric(n));
+		System.out.println(t.isSymmetric_traversal(n));
 
 	}
 

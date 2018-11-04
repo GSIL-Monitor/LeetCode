@@ -70,12 +70,12 @@ public class T46_Solution {
 
 	/**
 	 * @author yukunlee
-	 * @Description symmetric-tree
+	 * @Description symmetric-tree traversal
 	 * @date 2018年11月4日
 	 * @param root
 	 * @return
 	 */
-	public boolean isSymmetric(TreeNode root) {
+	public boolean isSymmetric_traversal(TreeNode root) {
 		Queue<TreeNode> queue = new LinkedList<>();
 		if (root == null)
 			return true;
@@ -120,5 +120,17 @@ public class T46_Solution {
 		return true;
 	}
 	
+	/**
+	 * @author yukunlee
+	 * @Description symmetric-tree recursion
+	 * @date 2018年11月4日
+	 * @param root
+	 * @return
+	 */
+	public boolean isSymmetric_recursion(TreeNode root) {
+		
+		return false;
+	}
 
+	
 }
