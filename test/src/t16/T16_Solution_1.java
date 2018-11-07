@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class T16_Solution_1 {
+	/**
+	 * @author yukunlee
+	 * @Description TODO
+	 * @date 2018年11月7日
+	 * @param points
+	 * @return
+	 */
 	public int maxPoints_1(Point[] points) {
 		int n = points.length;
 		int max = 0;
