@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 public class T2_1 {
 
+	/**
+	 * @author yukunlee
+	 * @Description TODO
+	 * @date 2018年11月8日
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
