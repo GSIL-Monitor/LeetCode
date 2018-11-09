@@ -136,6 +136,14 @@ public class T46_Solution {
 		return left.val == right.val && isEqual(left.left , right.right) && isEqual(left.right , right.left);
 	}
 	
+    /**
+     * @author yukunlee
+     * @Description isSameTree
+     * @date 2018年11月9日
+     * @param p
+     * @param q
+     * @return
+     */
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if(p == null && q == null) {
         	return true;
@@ -147,6 +155,12 @@ public class T46_Solution {
     	return isSameTree(p.left, q.left)&&isSameTree(p.right, q.right);
     }
     
+    /**
+     * @author yukunlee
+     * @Description recover-binary-search-tree
+     * @date 2018年11月9日
+     * @param root
+     */
     public void recoverTree(TreeNode root) {
         
     }
