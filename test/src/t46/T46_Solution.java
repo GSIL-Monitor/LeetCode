@@ -3,6 +3,7 @@ package t46;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 import t14.TreeNode;
 
@@ -202,13 +203,13 @@ public class T46_Solution {
 
 	/**
 	 * @author yukunlee
-	 * @Description TODO
+	 * @Description recover-binary-search-tree
 	 * @date 2018年11月9日
 	 * @param root
 	 */
 	TreeNode firstElem = null, secondElem = null;
 	TreeNode preElem = new TreeNode(Integer.MIN_VALUE);
-	
+
 	public void recoverTree_recursion(TreeNode root) {
 		// 中序遍历
 		inOrderTraverse(root);
@@ -216,6 +217,7 @@ public class T46_Solution {
 		firstElem.val = secondElem.val;
 		secondElem.val = tmp;
 	}
+
 	private void inOrderTraverse(TreeNode root) {
 		if (root == null)
 			return;
@@ -229,6 +231,55 @@ public class T46_Solution {
 		preElem = root;
 		inOrderTraverse(root.right);
 	}
-	
+
+	/**
+	 * @author yukunlee
+	 * @Description validate-binary-search-tree
+	 * @date 2018年11月11日
+	 * @param root
+	 * @return
+	 */
+	public boolean isValidBST(TreeNode root) {
+		return isValidBST_recursion(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
+	}
+
+	private boolean isValidBST_recursion(TreeNode root, int max, int min) {
+		if (root == null) {
+			return true;
+		}
+		if (root.val <= min || root.val >= max) {
+			return false;
+		}
+		return isValidBST_recursion(root.left, root.val, min) && isValidBST_recursion(root.right, max, root.val);
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description validate-binary-search-tree 中序遍历
+	 * @date 2018年11月11日
+	 * @param root
+	 * @return
+	 */
+	public boolean isValidBST_travsal(TreeNode root) {
+		if (root == null)
+			return true;
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		TreeNode cur = root;
+		TreeNode pre = null;
+		while (!stack.isEmpty() || cur != null) {
+			if (cur == null) {
+				cur = stack.pop();
+				if (pre != null && pre.val >= cur.val)
+					return false;
+				pre = cur;
+				cur = cur.right;
+			} else {
+
+				stack.push(cur);
+				cur = cur.left;
+			}
+		}
+		return true;
+	}
 
 }
