@@ -281,5 +281,74 @@ public class T46_Solution {
 		}
 		return true;
 	}
+	
+	
+    /**
+     * @author yukunlee
+     * @Description nique-binary-search-trees-ii
+     * @date 2018年11月13日
+     * @param n
+     * @return
+     */
+    public ArrayList<TreeNode> generateTrees2(int n) {  
+    	return recursion1(1, n);
+    }
+    private ArrayList<TreeNode> recursion1(int low , int high) {
+    	ArrayList<TreeNode> result = new ArrayList<>();
+    	if(low > high) {
+    		result.add(null);
+    		return result;
+    	}
+    	for(int i = low ; i <= high; ++i) {
+    		ArrayList<TreeNode> left = recursion1(low, i-1);
+    		ArrayList<TreeNode> right = recursion1(i+1, high);
+    		for( int j = 0 ; j < left.size(); ++j) {
+    			for( int k = 0 ; k <right.size() ; ++k) {
+    				TreeNode node = new TreeNode(i);
+    				node.left = left.get(j);
+    				node.right = right.get(k);
+    				result.add(node);
+    			}
+    		}       	
+    	}
+    	return result;
+    }
+    
+    /**
+     * @author yukunlee
+     * @Description unique-binary-search-trees
+     * @date 2018年11月13日
+     * @param n
+     * @return
+     */
+    public int numTrees(int n) {
+        return recursion(1, n);
+    }
+    
+    private int recursion(int low , int high) {
+    	if(low > high) {
+    		return 0;
+    	}
+    	int sum = 0;
+    	for(int i = low ; i <= high ; ++i) {
+    		int left = recursion(low, i-1);
+    		int right = recursion(i +1, high);
+    		sum += left + right;
+    	}
+    	return sum;
+    }
+   
+    public int numTrees_v1(int n) {
+    	if(n<=0) return 0;
+        int[] arr = new int[n+1];
+        arr[0] =1;
+        arr[1] =1;
+        for(int i = 2 ; i <= n ; ++i) {
+        	for(int j = 1; j <= i ; ++j) {
+        		arr[i] = arr[j-1] * arr[i-j]; 
+        	}
+        }
+        return arr[n];
+    }
 
 }
