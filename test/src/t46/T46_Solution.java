@@ -371,5 +371,30 @@ public class T46_Solution {
     	inorderTraversal_helper(list, root.right);
     	return list;
     }
+    
+    
+    /**
+     * @author yukunlee
+     * @Description binary-tree-inorder-traversal
+     * @date 2018年11月14日
+     * @param root
+     * @return
+     */
+    public ArrayList<Integer> inorderTraversal_v1(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode cur = root;
+        while(!st.isEmpty() || cur != null) {
+        	if(cur == null) {
+        		cur = st.pop();
+        		list.add(cur.val);
+        		cur = cur.right;
+        	}else {
+        		st.push(cur);
+        		cur = cur.left;
+        	}
+        }
+    	return list;
+    }
 
 }
