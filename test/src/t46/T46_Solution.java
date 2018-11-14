@@ -350,5 +350,26 @@ public class T46_Solution {
         }
         return arr[n];
     }
+    
+    /**
+     * @author yukunlee
+     * @Description binary-tree-inorder-traversal
+     * @date 2018年11月14日
+     * @param root
+     * @return
+     */
+    public ArrayList<Integer> inorderTraversal(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+    	return inorderTraversal_helper(list, root);
+    }
+    private ArrayList<Integer> inorderTraversal_helper(ArrayList<Integer> list , TreeNode root) {
+    	if(root == null) {
+    		return list;
+    	}
+    	inorderTraversal_helper(list, root.left);
+    	list.add(root.val);
+    	inorderTraversal_helper(list, root.right);
+    	return list;
+    }
 
 }
