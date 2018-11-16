@@ -1,5 +1,7 @@
 package t48;
 
+import t17.ListNode;
+
 public class T48_Solution {
 	/**
 	 * @author yukunlee
@@ -35,5 +37,10 @@ public class T48_Solution {
 		helper(arr, cur +1, tail);
 		return arr;
 	}
+	
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        
+    	return null;
+    }
 
 }
