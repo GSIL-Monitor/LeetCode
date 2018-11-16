@@ -17,7 +17,8 @@ public class T48_test {
 		for(int i : arr) {
 			System.out.print(i);
 		}*/
-		String s = "";
+		
+/*		String s = "";
 		int a = 1;
 		s += a;
 		System.out.println(s);
@@ -25,7 +26,8 @@ public class T48_test {
 		T49_Solution t = new T49_Solution();
 		ArrayList<String> list = t.restoreIpAddresses("010010");
 		JSONArray json = JSONArray.fromObject(list);
-		System.out.println(json);
+		System.out.println(json);*/
+		
 		
 
 	}

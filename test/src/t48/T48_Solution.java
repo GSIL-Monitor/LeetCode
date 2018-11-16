@@ -38,9 +38,31 @@ public class T48_Solution {
 		return arr;
 	}
 	
+    /**
+     * @author yukunlee
+     * @Description reverse-linked-list-ii
+     * @date 2018年11月16日
+     * @param head
+     * @param m
+     * @param n
+     * @return
+     */
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        
-    	return null;
+        ListNode pre , last;
+        int val =0 ;
+        last = pre = head;
+        while(n - m > 1) {
+            for(int i = 1 ; i < n ; ++i) {
+            	if( i == m) pre = last;
+            	last = last.next;
+            }
+            val = pre.val;
+            pre.val = last.val;
+            last.val = val;
+            ++m;
+            --n;
+        }
+    	return head;
     }
 
 }
