@@ -1,5 +1,8 @@
 package t48;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import t17.ListNode;
 
 public class T48_Solution {
@@ -63,6 +66,36 @@ public class T48_Solution {
             --n;
         }
     	return head;
+    }
+    
+    /**
+     * @author yukunlee
+     * @Description subsets
+     * @date 2018年11月16日
+     * @param S
+     * @return
+     */
+    ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> subsets(int[] S) {
+    	ArrayList<Integer> list = new ArrayList<>();
+    	Arrays.sort(S);
+    	for(int len = 0; len <= S.length ; ++len) {
+    		backtracking(S, len, 0 , list);
+    	}
+        return res;
+    }
+    private void backtracking(int[] s ,int len, int head , ArrayList<Integer> list) {
+    	if(len < 0) {
+    		return;
+    	}else if(len == 0){
+    		res.add(new ArrayList<>(list));
+    	}else {
+    		for(int i = head ; i < s.length ; ++i) {
+    			list.add(s[i]);
+    			backtracking(s, len-1, i + 1, list);
+    			list.remove(list.size() - 1);
+    		}
+    	}	
     }
 
 }
