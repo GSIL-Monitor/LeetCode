@@ -28,12 +28,19 @@ public class T48_test {
 		JSONArray json = JSONArray.fromObject(list);
 		System.out.println(json);*/
 		
-		T48_Solution t = new T48_Solution();
+	/*	T48_Solution t = new T48_Solution();
 		int[] s = {1,2};
 		ArrayList<ArrayList<Integer>> res = new ArrayList<>();
 		res = t.subsets(s);
 		JSONArray json = JSONArray.fromObject(res);
-		System.out.println(json);
+		System.out.println(json);*/
+		
+		/*T49_Solution t = new T49_Solution();
+		System.out.println(t.numDecodings("10"));*/
+		
+		final int a= 1;
+		System.out.println(1^2);
+		System.out.println(2 >> 1^2);
 
 	}
 

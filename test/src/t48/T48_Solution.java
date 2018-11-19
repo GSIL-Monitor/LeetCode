@@ -97,5 +97,39 @@ public class T48_Solution {
     		}
     	}	
     }
+    
+    /**
+     * @author yukunlee
+     * @Description TODO
+     * @date 2018年11月19日
+     * @param num
+     * @return
+     */
+    ArrayList<ArrayList<Integer>> res1;
+    public ArrayList<ArrayList<Integer>> subsetsWithDup(int[] num) {
+        if (num == null || num.length <= 0)
+            return res1;
+    	ArrayList<Integer> list = new ArrayList<>();
+    	Arrays.sort(num);
+    	for(int len = 0; len <= num.length ; ++len) {
+    		backtracking_1(num, len, 0 , list);
+    	}
+    	return res1;
+    }
+    private void backtracking_1(int[] s ,int len, int head , ArrayList<Integer> list) {
+    	if(len < 0) {
+    		return;
+    	}else if(len == 0){
+    		res1.add(new ArrayList<>(list));
+    	}else {
+    		for(int i = head ; i < s.length ; ++i) {
+                if (i > head && s[i] == s[i - 1])
+                    continue;
+    			list.add(s[i]);
+    			backtracking_1(s, len-1, i + 1, list);
+    			list.remove(list.size() - 1);
+    		}
+    	}	
+    }
 
 }
