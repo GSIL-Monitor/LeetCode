@@ -139,7 +139,7 @@ public class T49_Solution {
         for(int i = 0 ; i < n ; ++i) {
         	bits = 1 << i;
         	len = arr.size();
-        	for(int  j = 0 ; j < len ; ++j) {
+        	for(int  j = len -1; j >= 0 ; --j) {
         		arr.add(arr.get(j) | bits);
         	}
         }
