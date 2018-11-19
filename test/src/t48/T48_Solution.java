@@ -48,16 +48,13 @@ public class T48_Solution {
 	 */
 	public void merge(int A[], int m, int B[], int n) {
 		int a = m - 1, b = n - 1, c = n + m - 1;
-		while (c >= 0) {
-			if (b < 0 || A[a] > B[b]) {
-				A[c] = A[a];
-				--a;
-			} else {
-				A[c] = B[b];
-				--b;
-			}
-			--c;
+		while (a >= 0 && b >= 0) {
+			A[c--] = A[a] > B[b] ? A[a--] : B[b--];
 		}
+		while(b >= 0) {
+			A[c--] = B[b--];
+		}
+
 	}
 
 	/**
