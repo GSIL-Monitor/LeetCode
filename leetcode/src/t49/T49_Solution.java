@@ -195,8 +195,38 @@ public class T49_Solution {
      * @return
      */
     public ListNode partition(ListNode head, int x) {
+        ListNode pre = null, post = head , cur = head; 
+        while(cur != null) {
+        	if(cur.val >= x) {
+        		break;
+        	}else {
+            	pre = cur;
+        	}
+        	cur = cur.next;
+        }
+
+        if(pre != null) {
+        	cur = pre.next;
+        }
         
-    	return null;
+        while(cur != null) {
+        	if(cur.val < x) {
+        		post.next = cur.next;
+        		if(pre != null) {
+        			cur.next = pre.next.next;
+        			pre.next = cur;
+        			pre = pre.next;
+        		}else {
+        			cur.next = head;
+        			pre = cur;
+        			head = cur;
+        		}
+        	}else {
+        		post = cur;
+        	}
+        	cur = cur.next;
+        }
+    	return head;
     }
 
 	
