@@ -2,6 +2,8 @@ package t49;
 
 import java.util.ArrayList;
 
+import t17.ListNode;
+
 public class T49_Solution {
 	/**
 	 * @author yukunlee
@@ -182,6 +184,19 @@ public class T49_Solution {
         	}
         }
     	return false;
+    }
+    
+    /**
+     * @author yukunlee
+     * @Description partition-list
+     * @date 2018年11月20日
+     * @param head
+     * @param x
+     * @return
+     */
+    public ListNode partition(ListNode head, int x) {
+        
+    	return null;
     }
 
 	
