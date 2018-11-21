@@ -255,6 +255,14 @@ public class T49_Solution {
     			Math.max(helper(height, head, min-1), helper(height, min+1, tail)));
     }
     
+    
+    /**
+     * @author yukunlee
+     * @Description TODO
+     * @date 2018年11月21日
+     * @param height
+     * @return
+     */
     public int largestRectangleArea(int[] height) {
     	if(height.length <= 0) {
     		return 0;
@@ -293,8 +301,45 @@ public class T49_Solution {
      * @return
      */
     public int maximalRectangle(char[][] matrix) {
-        
-    	return 0;
+    	if(matrix ==null|| matrix.length <= 0 ||matrix[0].length <= 0) {
+    		return 0;
+    	}
+    	int m = matrix.length, n = matrix[0].length;
+        int res = 0;
+        int[] height = new int[n];
+    	for(int r = 0 ; r < m ; ++r) {
+    		  Stack<Integer> st = new Stack<>();
+    	        int count = 0;
+    	        for(int i = 0 ; i < n ; ++i) {
+    	        	 if(matrix[r][i] == '1') {
+    	    	        	height[i]++;
+    	    	        }else {
+    	    	        	height[i] = 0;
+    	    	        }
+    	        }
+    	        st.push(height[0]);
+    	        for(int i = 1 ; i <= height.length -1 ; ++i) {
+    	        	if(st.peek() <= height[i]) {
+    	        		st.push(height[i]);
+    	        	}else {
+    	            	count = 0;
+    	            	while(!st.isEmpty()&&st.peek() > height[i]) {
+    	            		count++;
+    	            		res = Math.max(res, st.pop() * count);
+    	            	}
+    	            	++count;
+    	            	while(count != 0) {
+    	            		st.push(height[i]);
+    	            		--count;
+    	            	}
+    	        	}
+    	        }
+    	        for(int i = 1 ;i <= height.length; ++i ) {
+    	        	res = Math.max(res, st.pop()*i);
+    	        }
+    	}
+      
+    	return res;
     }
     
     
