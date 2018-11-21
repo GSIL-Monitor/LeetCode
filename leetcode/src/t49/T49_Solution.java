@@ -284,6 +284,45 @@ public class T49_Solution {
         }
     	return res;
     }
+    
+    /**
+     * @author yukunlee
+     * @Description TODO
+     * @date 2018年11月21日
+     * @param matrix
+     * @return
+     */
+    public int maximalRectangle(char[][] matrix) {
+        
+    	return 0;
+    }
+    
+    
+    /**
+     * @author yukunlee
+     * @Description remove-duplicates-from-sorted-list
+     * @date 2018年11月21日
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+    	if(head == null) {
+    		return null;
+    	}
+        ListNode pre = head, post = head, cur = head.next;
+        while(cur != null) {
+        	if(pre.val == cur.val) {
+        		pre.next = cur.next;
+        		post = cur;
+        		cur = cur.next;
+        		post.next = null;
+        	}else {
+        		pre = cur;
+            	cur = cur.next;
+        	}
+        }
+    	return head;
+    }
 
 	
 		
