@@ -1,6 +1,7 @@
 package t49;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import t17.ListNode;
 
@@ -227,6 +228,61 @@ public class T49_Solution {
         	cur = cur.next;
         }
     	return head;
+    }
+    
+    
+    /**
+     * @author yukunlee
+     * @Description largest-rectangle-in-histogram
+     * @date 2018年11月21日
+     * @param height
+     * @return
+     */
+    public int largestRectangleArea_v1(int[] height) {
+    	return helper(height, 0, height.length-1);
+    }
+    private int  helper(int[] height , int head , int tail) {
+    	if(head > tail) {
+    		return 0;
+    	}
+    	int min = head;
+    	for(int i  = head ; i <= tail ; ++i) {
+    		if(height[i] < height[min]) {
+    			min = i;
+    		}
+    	}
+    	return Math.max((tail - head +1)*height[min],
+    			Math.max(helper(height, head, min-1), helper(height, min+1, tail)));
+    }
+    
+    public int largestRectangleArea(int[] height) {
+    	if(height.length <= 0) {
+    		return 0;
+    	}
+        Stack<Integer> st = new Stack<>();
+        int count = 0;
+        int res = 0;
+        st.push(height[0]);
+        for(int i = 1 ; i <= height.length -1 ; ++i) {
+        	if(st.peek() <= height[i]) {
+        		st.push(height[i]);
+        	}else {
+            	count = 0;
+            	while(!st.isEmpty()&&st.peek() > height[i]) {
+            		count++;
+            		res = Math.max(res, st.pop() * count);
+            	}
+            	++count;
+            	while(count != 0) {
+            		st.push(height[i]);
+            		--count;
+            	}
+        	}
+        }
+        for(int i = 1 ;i <= height.length; ++i ) {
+        	res = Math.max(res, st.pop()*i);
+        }
+    	return res;
     }
 
 	

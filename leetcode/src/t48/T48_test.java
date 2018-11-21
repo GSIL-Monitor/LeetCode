@@ -38,9 +38,13 @@ public class T48_test {
 		/*T49_Solution t = new T49_Solution();
 		System.out.println(t.numDecodings("10"));*/
 		
-		final int a= 1;
+/*		final int a= 1;
 		System.out.println(1^2);
-		System.out.println(2 >> 1^2);
+		System.out.println(2 >> 1^2);*/
+		
+		int[] arr = {2};
+		T49_Solution t = new T49_Solution();
+		System.out.println(t.largestRectangleArea(arr));
 
 	}
 
