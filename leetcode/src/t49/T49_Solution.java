@@ -117,7 +117,7 @@ public class T49_Solution {
 
 		return dp[len];
 	}
-	
+
 	/**
 	 * @author yukunlee
 	 * @Description grayCode
@@ -126,250 +126,323 @@ public class T49_Solution {
 	 * @return
 	 */
 	public ArrayList<Integer> grayCode(int n) {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
-        int num = 1 << n;
-        for(int i = 0; i < num; ++i){
-            arr.add(i>>1^i);  
-        }
-        return arr;
-    }
-	
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		int num = 1 << n;
+		for (int i = 0; i < num; ++i) {
+			arr.add(i >> 1 ^ i);
+		}
+		return arr;
+	}
+
 	public ArrayList<Integer> grayCode_v1(int n) {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
-        arr.add(0);
-        int bits = 0;
-        int len;
-        for(int i = 0 ; i < n ; ++i) {
-        	bits = 1 << i;
-        	len = arr.size();
-        	for(int  j = len -1; j >= 0 ; --j) {
-        		arr.add(arr.get(j) | bits);
-        	}
-        }
-        return arr;
-    }
-	
-	
-    /**
-     * @author yukunlee
-     * @Description scramble-string
-     * @date 2018年11月20日
-     * @param s1
-     * @param s2
-     * @return
-     */
-    public boolean isScramble(String s1, String s2) {
-        if(s1.equals(s2))
-        	return true;
-        if(s1.length() != s2.length()) 
-        	return false;
-        int len = s1.length();
-        int[] letter = new int[26];
-        for(int i = 0 ; i < len ; ++i) {
-        	letter[s1.charAt(i) - 'a']++;
-        	letter[s2.charAt(i) - 'a']--;
-        }
-        for(int i = 0 ; i < 26 ; ++i) {
-        	if(letter[i] != 0)
-        		return false;
-        }
-        
-        for(int i = 1 ; i < len ; ++i) {
-        	if(isScramble(s1.substring(0, i), s2.substring(0,i)) 
-        			&& isScramble(s1.substring(i), s2.substring(i))) {
-        		return true;
-        	}
-        	if(isScramble(s1.substring(0, i), s2.substring(len - i))
-        			&& isScramble(s1.substring(i), s2.substring(0, len - i))) {
-        		return true;
-        	}
-        }
-    	return false;
-    }
-    
-    /**
-     * @author yukunlee
-     * @Description partition-list
-     * @date 2018年11月20日
-     * @param head
-     * @param x
-     * @return
-     */
-    public ListNode partition(ListNode head, int x) {
-        ListNode pre = null, post = head , cur = head; 
-        while(cur != null) {
-        	if(cur.val >= x) {
-        		break;
-        	}else {
-            	pre = cur;
-        	}
-        	cur = cur.next;
-        }
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		arr.add(0);
+		int bits = 0;
+		int len;
+		for (int i = 0; i < n; ++i) {
+			bits = 1 << i;
+			len = arr.size();
+			for (int j = len - 1; j >= 0; --j) {
+				arr.add(arr.get(j) | bits);
+			}
+		}
+		return arr;
+	}
 
-        if(pre != null) {
-        	cur = pre.next;
-        }
-        
-        while(cur != null) {
-        	if(cur.val < x) {
-        		post.next = cur.next;
-        		if(pre != null) {
-        			cur.next = pre.next.next;
-        			pre.next = cur;
-        			pre = pre.next;
-        		}else {
-        			cur.next = head;
-        			pre = cur;
-        			head = cur;
-        		}
-        	}else {
-        		post = cur;
-        	}
-        	cur = cur.next;
-        }
-    	return head;
-    }
-    
-    
-    /**
-     * @author yukunlee
-     * @Description largest-rectangle-in-histogram
-     * @date 2018年11月21日
-     * @param height
-     * @return
-     */
-    public int largestRectangleArea_v1(int[] height) {
-    	return helper(height, 0, height.length-1);
-    }
-    private int  helper(int[] height , int head , int tail) {
-    	if(head > tail) {
-    		return 0;
-    	}
-    	int min = head;
-    	for(int i  = head ; i <= tail ; ++i) {
-    		if(height[i] < height[min]) {
-    			min = i;
-    		}
-    	}
-    	return Math.max((tail - head +1)*height[min],
-    			Math.max(helper(height, head, min-1), helper(height, min+1, tail)));
-    }
-    
-    
-    /**
-     * @author yukunlee
-     * @Description TODO
-     * @date 2018年11月21日
-     * @param height
-     * @return
-     */
-    public int largestRectangleArea(int[] height) {
-    	if(height.length <= 0) {
-    		return 0;
-    	}
-        Stack<Integer> st = new Stack<>();
-        int count = 0;
-        int res = 0;
-        st.push(height[0]);
-        for(int i = 1 ; i <= height.length -1 ; ++i) {
-        	if(st.peek() <= height[i]) {
-        		st.push(height[i]);
-        	}else {
-            	count = 0;
-            	while(!st.isEmpty()&&st.peek() > height[i]) {
-            		count++;
-            		res = Math.max(res, st.pop() * count);
-            	}
-            	++count;
-            	while(count != 0) {
-            		st.push(height[i]);
-            		--count;
-            	}
-        	}
-        }
-        for(int i = 1 ;i <= height.length; ++i ) {
-        	res = Math.max(res, st.pop()*i);
-        }
-    	return res;
-    }
-    
-    /**
-     * @author yukunlee
-     * @Description TODO
-     * @date 2018年11月21日
-     * @param matrix
-     * @return
-     */
-    public int maximalRectangle(char[][] matrix) {
-    	if(matrix ==null|| matrix.length <= 0 ||matrix[0].length <= 0) {
-    		return 0;
-    	}
-    	int m = matrix.length, n = matrix[0].length;
-        int res = 0;
-        int[] height = new int[n];
-    	for(int r = 0 ; r < m ; ++r) {
-    		  Stack<Integer> st = new Stack<>();
-    	        int count = 0;
-    	        for(int i = 0 ; i < n ; ++i) {
-    	        	 if(matrix[r][i] == '1') {
-    	    	        	height[i]++;
-    	    	        }else {
-    	    	        	height[i] = 0;
-    	    	        }
-    	        }
-    	        st.push(height[0]);
-    	        for(int i = 1 ; i <= height.length -1 ; ++i) {
-    	        	if(st.peek() <= height[i]) {
-    	        		st.push(height[i]);
-    	        	}else {
-    	            	count = 0;
-    	            	while(!st.isEmpty()&&st.peek() > height[i]) {
-    	            		count++;
-    	            		res = Math.max(res, st.pop() * count);
-    	            	}
-    	            	++count;
-    	            	while(count != 0) {
-    	            		st.push(height[i]);
-    	            		--count;
-    	            	}
-    	        	}
-    	        }
-    	        for(int i = 1 ;i <= height.length; ++i ) {
-    	        	res = Math.max(res, st.pop()*i);
-    	        }
-    	}
-      
-    	return res;
-    }
-    
-    
-    /**
-     * @author yukunlee
-     * @Description remove-duplicates-from-sorted-list
-     * @date 2018年11月21日
-     * @param head
-     * @return
-     */
-    public ListNode deleteDuplicates(ListNode head) {
-    	if(head == null) {
-    		return null;
-    	}
-        ListNode pre = head, post = head, cur = head.next;
-        while(cur != null) {
-        	if(pre.val == cur.val) {
-        		pre.next = cur.next;
-        		post = cur;
-        		cur = cur.next;
-        		post.next = null;
-        	}else {
-        		pre = cur;
-            	cur = cur.next;
-        	}
-        }
-    	return head;
-    }
+	/**
+	 * @author yukunlee
+	 * @Description scramble-string
+	 * @date 2018年11月20日
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
+	public boolean isScramble(String s1, String s2) {
+		if (s1.equals(s2))
+			return true;
+		if (s1.length() != s2.length())
+			return false;
+		int len = s1.length();
+		int[] letter = new int[26];
+		for (int i = 0; i < len; ++i) {
+			letter[s1.charAt(i) - 'a']++;
+			letter[s2.charAt(i) - 'a']--;
+		}
+		for (int i = 0; i < 26; ++i) {
+			if (letter[i] != 0)
+				return false;
+		}
 
-	
+		for (int i = 1; i < len; ++i) {
+			if (isScramble(s1.substring(0, i), s2.substring(0, i)) && isScramble(s1.substring(i), s2.substring(i))) {
+				return true;
+			}
+			if (isScramble(s1.substring(0, i), s2.substring(len - i))
+					&& isScramble(s1.substring(i), s2.substring(0, len - i))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description partition-list
+	 * @date 2018年11月20日
+	 * @param head
+	 * @param x
+	 * @return
+	 */
+	public ListNode partition(ListNode head, int x) {
+		ListNode pre = null, post = head, cur = head;
+		while (cur != null) {
+			if (cur.val >= x) {
+				break;
+			} else {
+				pre = cur;
+			}
+			cur = cur.next;
+		}
+
+		if (pre != null) {
+			cur = pre.next;
+		}
+
+		while (cur != null) {
+			if (cur.val < x) {
+				post.next = cur.next;
+				if (pre != null) {
+					cur.next = pre.next.next;
+					pre.next = cur;
+					pre = pre.next;
+				} else {
+					cur.next = head;
+					pre = cur;
+					head = cur;
+				}
+			} else {
+				post = cur;
+			}
+			cur = cur.next;
+		}
+		return head;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description largest-rectangle-in-histogram
+	 * @date 2018年11月21日
+	 * @param height
+	 * @return
+	 */
+	public int largestRectangleArea_v1(int[] height) {
+		return helper(height, 0, height.length - 1);
+	}
+
+	private int helper(int[] height, int head, int tail) {
+		if (head > tail) {
+			return 0;
+		}
+		int min = head;
+		for (int i = head; i <= tail; ++i) {
+			if (height[i] < height[min]) {
+				min = i;
+			}
+		}
+		return Math.max((tail - head + 1) * height[min],
+				Math.max(helper(height, head, min - 1), helper(height, min + 1, tail)));
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description TODO
+	 * @date 2018年11月21日
+	 * @param height
+	 * @return
+	 */
+	public int largestRectangleArea(int[] height) {
+		if (height.length <= 0) {
+			return 0;
+		}
+		Stack<Integer> st = new Stack<>();
+		int count = 0;
+		int res = 0;
+		st.push(height[0]);
+		for (int i = 1; i <= height.length - 1; ++i) {
+			if (st.peek() <= height[i]) {
+				st.push(height[i]);
+			} else {
+				count = 0;
+				while (!st.isEmpty() && st.peek() > height[i]) {
+					count++;
+					res = Math.max(res, st.pop() * count);
+				}
+				++count;
+				while (count != 0) {
+					st.push(height[i]);
+					--count;
+				}
+			}
+		}
+		for (int i = 1; i <= height.length; ++i) {
+			res = Math.max(res, st.pop() * i);
+		}
+		return res;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description TODO
+	 * @date 2018年11月21日
+	 * @param matrix
+	 * @return
+	 */
+	public int maximalRectangle(char[][] matrix) {
+		if (matrix == null || matrix.length <= 0 || matrix[0].length <= 0) {
+			return 0;
+		}
+		int m = matrix.length, n = matrix[0].length;
+		int res = 0;
+		int[] height = new int[n];
+		for (int r = 0; r < m; ++r) {
+			Stack<Integer> st = new Stack<>();
+			int count = 0;
+			for (int i = 0; i < n; ++i) {
+				if (matrix[r][i] == '1') {
+					height[i]++;
+				} else {
+					height[i] = 0;
+				}
+			}
+			st.push(height[0]);
+			for (int i = 1; i <= height.length - 1; ++i) {
+				if (st.peek() <= height[i]) {
+					st.push(height[i]);
+				} else {
+					count = 0;
+					while (!st.isEmpty() && st.peek() > height[i]) {
+						count++;
+						res = Math.max(res, st.pop() * count);
+					}
+					++count;
+					while (count != 0) {
+						st.push(height[i]);
+						--count;
+					}
+				}
+			}
+			for (int i = 1; i <= height.length; ++i) {
+				res = Math.max(res, st.pop() * i);
+			}
+		}
+
+		return res;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description remove-duplicates-from-sorted-list
+	 * @date 2018年11月21日
+	 * @param head
+	 * @return
+	 */
+	public ListNode deleteDuplicates_v1(ListNode head) {
+		if (head == null) {
+			return null;
+		}
+		ListNode pre = head, post = head, cur = head.next;
+		while (cur != null) {
+			if (pre.val == cur.val) {
+				pre.next = cur.next;
+				post = cur;
+				cur = cur.next;
+				post.next = null;
+			} else {
+				pre = cur;
+				cur = cur.next;
+			}
+		}
+		return head;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description remove-duplicates-from-sorted-list-ii
+	 * @date 2018年11月22日
+	 * @param head
+	 * @return
+	 */
+	public ListNode deleteDuplicates(ListNode head) {
+		ListNode pre = null, post, cur = head;
+		while (cur != null && cur.next != null) {
+			if (cur.val != cur.next.val) {
+				pre = cur;
+				cur = cur.next;
+			} else {
+				while (cur.next != null && cur.val == cur.next.val) {
+					cur = cur.next;
+				}
+				if (pre == null) {
+					head = cur.next;
+					cur = head;
+				} else {
+					post = cur;
+					pre.next = cur.next;
+					cur = pre.next;
+					post.next = null;
+				}
+			}
+		}
+		return head;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description search-in-rotated-sorted-array
+	 * @date 2018年11月22日
+	 * @param A
+	 * @param target
+	 * @return
+	 */
+	public int search_v1(int[] A, int target) {
+		for (int i = 0; i < A.length; ++i) {
+			if (A[i] == target) {
+				return i;
+			} else {
+				if (i > 0 && A[i] > target && A[i - 1] < target) {
+					return -1;
+				}
+			}
+		}
+		return -1;
+	}
+
+	//折半查找
+	public int search(int[] A, int target) {
+		int head = 0, tail = A.length - 1;
 		
+		while (head <= tail) {
+			int mid = head + (tail - head) / 2;
+			if (mid == target) {
+				return mid;
+			}
+			if (A[head] <= A[mid])// 左边有序
+			{
+				if (A[head] <= target && target < A[mid])
+					tail = mid - 1;
+				else
+					head = mid + 1;
+			} else// 右边有序
+			{
+				if (A[mid] < target && target <= A[tail])
+					head = mid + 1;
+				else
+					tail = mid - 1;
+
+			}
+		}
+		
+		return -1;
+	}
 
 }
