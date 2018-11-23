@@ -42,9 +42,13 @@ public class T48_test {
 		System.out.println(1^2);
 		System.out.println(2 >> 1^2);*/
 		
-		int[] arr = {2};
+/*		int[] arr = {2};
 		T49_Solution t = new T49_Solution();
-		System.out.println(t.largestRectangleArea(arr));
+		System.out.println(t.largestRectangleArea(arr));*/
+		
+		T49_Solution t= new T49_Solution();
+		int[] A = {};
+		System.out.println(t.removeDuplicates(A));
 
 	}
 

@@ -417,10 +417,10 @@ public class T49_Solution {
 		return -1;
 	}
 
-	//折半查找
+	// 折半查找
 	public int search(int[] A, int target) {
 		int head = 0, tail = A.length - 1;
-		
+
 		while (head <= tail) {
 			int mid = head + (tail - head) / 2;
 			if (mid == target) {
@@ -441,8 +441,53 @@ public class T49_Solution {
 
 			}
 		}
-		
+
 		return -1;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description remove-duplicates-from-sorted-array
+	 * @date 2018年11月23日
+	 * @param A
+	 * @return
+	 */
+	public int removeDuplicates_v1(int[] A) {
+		if (A.length <= 0)
+			return 0;
+		int res = 1;
+		for (int i = 1; i < A.length; ++i) {
+			if (A[i - 1] != A[i]) {
+				A[res++] = A[i];
+			}
+		}
+		return res;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description remove-duplicates-from-sorted-array II
+	 * @date 2018年11月23日
+	 * @param A
+	 * @return
+	 */
+	public int removeDuplicates(int[] A) {
+		if (A.length <= 0)
+			return 0;
+		int res = 1;
+		int count = 0;
+		for (int i = 1; i < A.length; ++i) {
+			if (A[i - 1] != A[i]) {
+				A[res++] = A[i];
+				count = 0;	
+			} else {
+				++count;
+				if (count <= 1) {
+					A[res++] = A[i];
+				}
+			}
+		}
+		return res;
 	}
 
 }
