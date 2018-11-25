@@ -1,6 +1,8 @@
 package t48;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.sf.json.JSONArray;
 import t49.T49_Solution;
@@ -45,10 +47,18 @@ public class T48_test {
 /*		int[] arr = {2};
 		T49_Solution t = new T49_Solution();
 		System.out.println(t.largestRectangleArea(arr));*/
-		
+	/*	
 		T49_Solution t= new T49_Solution();
 		int[] A = {};
-		System.out.println(t.removeDuplicates(A));
+		System.out.println(t.removeDuplicates(A));*/
+		
+		String word = "word";
+		System.out.println(word.charAt(1));
+		Map<Integer, Integer> map = new HashMap<>(100, 1);
+		
+		T49_Solution t = new T49_Solution();
+		JSONArray json = JSONArray.fromObject(t.combine(4, 2));
+		System.out.println(json);
 
 	}
 

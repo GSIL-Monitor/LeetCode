@@ -479,7 +479,7 @@ public class T49_Solution {
 		for (int i = 1; i < A.length; ++i) {
 			if (A[i - 1] != A[i]) {
 				A[res++] = A[i];
-				count = 0;	
+				count = 0;
 			} else {
 				++count;
 				if (count <= 1) {
@@ -488,6 +488,98 @@ public class T49_Solution {
 			}
 		}
 		return res;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description word-search
+	 * @date 2018年11月25日
+	 * @param board
+	 * @param word
+	 * @return
+	 */
+	public boolean exist(char[][] board, String word) {
+		for (int i = 0; i < board.length; ++i) {
+			for (int j = 0; j < board[0].length; ++j) {
+				if (DFS(board, word, i, j, 0))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean DFS(char[][] board, String word, int i, int j, int index) {
+		if (index >= word.length()) {
+			return true;
+		}
+		if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || word.charAt(index) != board[i][j]) {
+			return false;
+		}
+
+		board[i][j] ^= 512;
+		boolean flag = DFS(board, word, i - 1, j, index + 1) || DFS(board, word, i + 1, j, index + 1)
+				|| DFS(board, word, i, j - 1, index + 1) || DFS(board, word, i, j + 1, index + 1);
+		board[i][j] ^= 512;
+		return flag;
+	}
+
+
+	/**
+	 * @author yukunlee
+	 * @Description TODO
+	 * @date 2018年11月25日
+	 * @param n
+	 * @param k
+	 * @return
+	 */
+	ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+
+	public ArrayList<ArrayList<Integer>> combine(int n, int k) {
+		if (n <= 0 || k <= 0 || n < k)
+            return res;
+		ArrayList<Integer> list = new ArrayList<>();
+		helper(list, 1, n, k);
+		return res;
+	}
+
+	private void helper(ArrayList<Integer> list, int index, int n, int k) {
+		if (0 == k) {
+			res.add(new ArrayList<>(list));
+			return;
+		}
+		if (index > n) {
+			return;
+		}
+		for (int i = index; i <= n - k + 1; ++i) {
+			list.add(i);
+			helper(list, i + 1, n, k-1);
+			list.remove(list.size() - 1);
+		}
+		return;
+	}
+
+	
+	
+	public ArrayList<ArrayList<Integer>> combine_v1(int n, int k) {
+		ArrayList<Integer> list = new ArrayList<>();
+		helper_v1(list, 1, n, k);
+		return res;
+	}
+
+	private void helper_v1(ArrayList<Integer> list, int index, int n, int k) {
+		if (0 == k) {
+			res.add(new ArrayList<>(list));
+			return;
+		}
+		if (index > n) {
+			return;
+		}
+		list.add(index);
+		helper(list, index + 1, n, k-1);
+		list.remove(list.size() - 1);
+
+		helper(list, index + 1, n, k);
+		return;
 	}
 
 }
