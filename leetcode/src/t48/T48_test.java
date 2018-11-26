@@ -1,11 +1,14 @@
 package t48;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.json.JSONArray;
 import t49.T49_Solution;
+import t50.T50_Solution;
 
 public class T48_test {
 
@@ -52,13 +55,28 @@ public class T48_test {
 		int[] A = {};
 		System.out.println(t.removeDuplicates(A));*/
 		
-		String word = "word";
+	/*	String word = "word";
 		System.out.println(word.charAt(1));
 		Map<Integer, Integer> map = new HashMap<>(100, 1);
 		
 		T49_Solution t = new T49_Solution();
 		JSONArray json = JSONArray.fromObject(t.combine(4, 2));
-		System.out.println(json);
+		System.out.println(json);*/
+		
+ /*       float f ;
+        f = 1.2f;
+        double d = 1.2d;
+        System.out.println(d == f);*/
+		
+
+	/*	
+		String S ="ADOBECODEBANC";
+		String T ="ABC";
+		T50_Solution t = new T50_Solution();
+		System.out.println(t.minWindow(S, T));*/
+		
+		
+		
 
 	}
 
