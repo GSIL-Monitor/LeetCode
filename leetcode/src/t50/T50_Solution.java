@@ -100,7 +100,7 @@ public class T50_Solution {
 				break;
 			}
 		}
-		if (matrix[matrix.length-1][matrix[0].length-1] < target) {
+		if (matrix[matrix.length - 1][matrix[0].length - 1] < target) {
 			for (int j = 0; j < matrix[0].length; ++j) {
 				if (matrix[matrix.length][j] == target)
 					return true;
@@ -108,20 +108,81 @@ public class T50_Solution {
 		}
 		return false;
 	}
-	
+
 	public boolean searchMatrix(int[][] matrix, int target) {
-		int row = 0 ,col = matrix[0].length-1;
-		while(row < matrix.length && col >= 0) {
-			if(target == matrix[row][col]) return true;
-			else if(target < matrix[row][col]) {
+		int row = 0, col = matrix[0].length - 1;
+		while (row < matrix.length && col >= 0) {
+			if (target == matrix[row][col])
+				return true;
+			else if (target < matrix[row][col]) {
 				--col;
-			}
-			else if(target > matrix[row][col]) {
+			} else if (target > matrix[row][col]) {
 				++row;
 			}
 		}
 		return false;
 	}
 
-	
+	/**
+	 * @author yukunlee
+	 * @Description set-matrix-zeroes
+	 * @date 2018年11月27日
+	 * @param matrix
+	 */
+	public void setZeroes(int[][] matrix) {
+		HashSet<Integer> row = new HashSet<>();
+		HashSet<Integer> col = new HashSet<>();
+
+		for (int i = 0; i < matrix.length; ++i) {
+			for (int j = 0; j < matrix[0].length; ++j) {
+				if (matrix[i][j] == 0) {
+					row.add(i);
+					col.add(j);
+				}
+			}
+		}
+
+		for (Integer i : row) {
+			for (int j = 0; j < matrix[0].length; ++j) {
+				matrix[i][j] = 0;
+			}
+		}
+
+		for (Integer i : col) {
+			for (int j = 0; j < matrix.length; ++j) {
+				matrix[j][i] = 0;
+			}
+		}
+
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description edit-distance
+	 * @date 2018年11月27日
+	 * @param word1
+	 * @param word2
+	 * @return
+	 */
+	public int minDistance(String word1, String word2) {
+		char[] s1 = word1.toCharArray();
+		char[] s2 = word2.toCharArray();
+		int len1 = s1.length, len2 = s2.length;
+		int[][] dp = new int[len1 + 1][len2 + 1];
+		for (int i = 0; i <= len1; ++i) {
+			for (int j = 0; j <= len2; ++j) {
+				if (i == 0) {
+					dp[i][j] = j;
+				} else if (j == 0) {
+					dp[i][j] = i;
+				} else {
+					dp[i][j] = Math.min(Math.min(dp[i][j - 1] + 1, dp[i - 1][j] + 1),
+							dp[i - 1][j - 1] + (s1[i - 1] == s2[j - 1] ? 0 : 1));
+				}
+
+			}
+		}
+		return dp[len1][len2];
+	}
+
 }
