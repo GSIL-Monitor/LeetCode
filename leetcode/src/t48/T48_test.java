@@ -75,7 +75,14 @@ public class T48_test {
 		T50_Solution t = new T50_Solution();
 		System.out.println(t.minWindow(S, T));*/
 		
+	/*	String h1 ="/home/";
+		String h2 ="/a/./b/../../c/";
+		T50_Solution t =new T50_Solution();
+		System.out.println(t.simplifyPath(h2));*/
 		
+		
+		T50_Solution t = new T50_Solution();
+		System.out.println(t.climbStairs(4));
 		
 
 	}

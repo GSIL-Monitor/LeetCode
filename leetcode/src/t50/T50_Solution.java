@@ -185,4 +185,42 @@ public class T50_Solution {
 		return dp[len1][len2];
 	}
 
+	/**
+	 * @author yukunlee
+	 * @Description simplify-path
+	 * @date 2018年11月28日
+	 * @param path
+	 * @return
+	 */
+	public String simplifyPath(String path) {
+		Stack<String> st = new Stack<>();
+		String[] str = path.split("/");
+		for (String s : str) {
+			if (!st.isEmpty() && s.equals("..")) {
+				st.pop();
+			} else if (!s.equals("") && !s.equals(".") && !s.equals("..")) {
+				st.push(s);
+			}
+		}
+		// List<String> list = new ArrayList<>(st);
+		return "/" + String.join("/", st);
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description climbing-stairs
+	 * @date 2018年11月28日
+	 * @param n
+	 * @return
+	 */
+	public int climbStairs(int n) {
+		int[] dp = new int[n + 1];
+		dp[0] = 1;
+		dp[1] = 1;
+		for (int i = 2; i < n + 1; ++i) {
+			dp[i] = dp[i-1] + dp[i-2]; 
+		}
+		return dp[n];
+	}
+
 }
