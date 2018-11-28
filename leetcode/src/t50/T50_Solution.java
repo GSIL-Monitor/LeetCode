@@ -234,11 +234,11 @@ public class T50_Solution {
     public int sqrt(int x) {
     	long n = x , a ,b,c;
         while(n*n > x) {
-        	a = (n*n-x);
+        	/*a = (n*n-x);
         	b = (n<<1);
         	c = Math.round((float)a/b);
-        	n = n - c;
-        	//n = (n+x/n)>>1;
+        	n = n - c;*/
+        	n = (n+x/n)>>1;
         }
     	return (int)n;
     }
