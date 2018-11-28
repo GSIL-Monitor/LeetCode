@@ -82,7 +82,7 @@ public class T48_test {
 		
 		
 		T50_Solution t = new T50_Solution();
-		System.out.println(t.climbStairs(4));
+		System.out.println(t.sqrt(9));
 		
 
 	}

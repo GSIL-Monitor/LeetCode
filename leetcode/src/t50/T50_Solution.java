@@ -208,7 +208,7 @@ public class T50_Solution {
 
 	/**
 	 * @author yukunlee
-	 * @Description climbing-stairs
+	 * @Description climbing-stairs 
 	 * @date 2018年11月28日
 	 * @param n
 	 * @return
@@ -222,5 +222,27 @@ public class T50_Solution {
 		}
 		return dp[n];
 	}
+	
+	
+    /**
+     * @author yukunlee
+     * @Description sqrtx  牛顿逼近法
+     * @date 2018年11月28日
+     * @param x
+     * @return
+     */
+    public int sqrt(int x) {
+    	long n = x , a ,b,c;
+        while(n*n > x) {
+        	a = (n*n-x);
+        	b = (n<<1);
+        	c = Math.round((float)a/b);
+        	n = n - c;
+        	//n = (n+x/n)>>1;
+        }
+    	return (int)n;
+    }
+    
+    
 
 }
