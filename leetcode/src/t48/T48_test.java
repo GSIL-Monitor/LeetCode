@@ -81,8 +81,12 @@ public class T48_test {
 		System.out.println(t.simplifyPath(h2));*/
 		
 		
-		T50_Solution t = new T50_Solution();
+/*		T50_Solution t = new T50_Solution();
 		System.out.println(t.sqrt(9));
+		*/
+		
+		int[] arr = new int[2];
+		System.out.println(arr[0] + arr[1]);
 		
 
 	}
