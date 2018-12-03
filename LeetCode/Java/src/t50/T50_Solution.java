@@ -260,6 +260,74 @@ public class T50_Solution {
     	return digits;
     }
     
+    /**
+     * @author yukunlee
+     * @Description text-justification
+     * @date 2018年12月3日
+     * @param words
+     * @param L
+     * @return
+     */
+    public ArrayList<String> fullJustify(String[] words, int L) {
+    	ArrayList<String> result = new ArrayList<>();
+    	if(words.length == 0 || L == 0) {
+    		result.add("");
+    		return result;
+    	}
+        Queue<String>  mid = new LinkedList<>();
+        int count = 0 , num = 0 , blank = 0 , mod = 0;
+        for(int i = 0 ; i <= words.length ; ++i) {
+        	if(i != words.length && (count + words[i].length()) <= L - mid.size()) {
+        		count += words[i].length();
+        		mid.add(words[i]);
+        		continue;
+        	}else if(count != 0 && mid.size()>1){
+        		String res = "";
+        		if(i == words.length ) {
+        			blank = L - count - mid.size() +1;
+        			num = mid.size()-1;
+        			for(int j = 0 ; j < num; ++j) {
+        				res += mid.poll() + " ";   			
+            		}
+        			res += mid.poll();
+        			for(int j = 0 ; j < blank ; ++j) {
+        				res += " ";
+        			}
+        		}else {
+            		blank = L - count;
+            		num = mid.size()-1;
+            		mod = blank % num;
+            		blank = blank / num;
+            		for(int j = 0 ; j < num; ++j) {
+        				res += mid.poll();
+        				for(int n = 0; n < blank ; ++n) {
+        					res += " ";
+        				}
+        				if( j < mod) {
+        					res += " ";
+        				}        			
+            		}
+            		res += mid.poll();
+        		}
+				result.add(res);
+				count = 0;
+				--i;
+        	}else if(mid.size() == 1){
+        		String res = "";
+        		blank = L - count;
+        		res += mid.poll();
+        		for(int n = 0; n < blank ; ++n) {
+					res += " ";
+				}
+				result.add(res);
+				count = 0;
+				--i;
+        	}
+        	
+        }
+    	return result;
+    }
+    
     
 
 }

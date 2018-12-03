@@ -85,8 +85,20 @@ public class T48_test {
 		System.out.println(t.sqrt(9));
 		*/
 		
-		int[] arr = new int[2];
-		System.out.println(arr[0] + arr[1]);
+/*		int[] arr = new int[2];
+		System.out.println(arr[0] + arr[1]+"-------");*/
+	/*	
+		String str = " ";
+		System.out.println(str.length());*/
+		
+		T50_Solution t = new T50_Solution();
+		String[] words = {"My","momma","always","said,","'Life","was","like","a","box","of","chocolates.","You","never","know","what","you're","gonna","get."};
+		ArrayList<String> arr = new ArrayList<>();
+		arr = t.fullJustify(words, 20);
+		for(String str : arr) {
+			System.out.println(str);
+		}
+		
 		
 
 	}
