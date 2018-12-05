@@ -397,7 +397,7 @@ public class T50_Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode prehead = new ListNode(0);
         ListNode cur = prehead;
-        while(true) {
+        while(l1 != null && l2 != null) {
         	if(l1.val <= l2.val) {
         		cur.next = l1;
         		l1 = l1.next;
@@ -415,6 +415,10 @@ public class T50_Solution {
         			return prehead.next;
         		}
         	}
+        	
         }
+        return l1 == null? l2:l1;
     } 
+    
+    
 }

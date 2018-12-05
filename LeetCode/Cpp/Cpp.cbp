@@ -34,8 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/ListNode.h" />
 		<Unit filename="include/t1.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ListNode.cpp" />
 		<Unit filename="src/t1.cpp" />
 		<Extensions>
 			<code_completion />
