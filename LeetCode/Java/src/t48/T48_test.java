@@ -91,13 +91,16 @@ public class T48_test {
 		String str = " ";
 		System.out.println(str.length());*/
 		
-		T50_Solution t = new T50_Solution();
+/*		T50_Solution t = new T50_Solution();
 		String[] words = {"My","momma","always","said,","'Life","was","like","a","box","of","chocolates.","You","never","know","what","you're","gonna","get."};
 		ArrayList<String> arr = new ArrayList<>();
 		arr = t.fullJustify(words, 20);
 		for(String str : arr) {
 			System.out.println(str);
-		}
+		}*/
+		
+		T50_Solution t =new T50_Solution();
+		System.out.println(t.addBinary("11", "1"));
 		
 		
 

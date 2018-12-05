@@ -208,7 +208,7 @@ public class T50_Solution {
 
 	/**
 	 * @author yukunlee
-	 * @Description climbing-stairs 
+	 * @Description climbing-stairs
 	 * @date 2018年11月28日
 	 * @param n
 	 * @return
@@ -218,116 +218,169 @@ public class T50_Solution {
 		dp[0] = 1;
 		dp[1] = 1;
 		for (int i = 2; i < n + 1; ++i) {
-			dp[i] = dp[i-1] + dp[i-2]; 
+			dp[i] = dp[i - 1] + dp[i - 2];
 		}
 		return dp[n];
 	}
-	
-	
-    /**
-     * @author yukunlee
-     * @Description sqrtx  牛顿逼近法
-     * @date 2018年11月28日
-     * @param x
-     * @return
-     */
-    public int sqrt(int x) {
-    	long n = x , a ,b,c;
-        while(n*n > x) {
-        	/*a = (n*n-x);
-        	b = (n<<1);
-        	c = Math.round((float)a/b);
-        	n = n - c;*/
-        	n = (n+x/n)>>1;
-        }
-    	return (int)n;
-    }
-    
-    public int[] plusOne(int[] digits) {
-        for(int i = digits.length-1 ; i >= 0 ; --i) {
-        	if(digits[i] == 9) {
-        		digits[i] = 0;
-        	}else {
-        		digits[i]++;
-        		break;
-        	}
-        }
-        if(digits[0] == 0) {
-        	int[] arr = new int[digits.length+1];
-        	arr[0] = 1;
-        	return arr;
-        }
-    	return digits;
-    }
-    
-    /**
-     * @author yukunlee
-     * @Description text-justification
-     * @date 2018年12月3日
-     * @param words
-     * @param L
-     * @return
-     */
-    public ArrayList<String> fullJustify(String[] words, int L) {
-    	ArrayList<String> result = new ArrayList<>();
-    	if(words.length == 0 || L == 0) {
-    		result.add("");
-    		return result;
-    	}
-        Queue<String>  mid = new LinkedList<>();
-        int count = 0 , num = 0 , blank = 0 , mod = 0;
-        for(int i = 0 ; i <= words.length ; ++i) {
-        	if(i != words.length && (count + words[i].length()) <= L - mid.size()) {
-        		count += words[i].length();
-        		mid.add(words[i]);
-        		continue;
-        	}else if(count != 0 && mid.size()>1){
-        		String res = "";
-        		if(i == words.length ) {
-        			blank = L - count - mid.size() +1;
-        			num = mid.size()-1;
-        			for(int j = 0 ; j < num; ++j) {
-        				res += mid.poll() + " ";   			
-            		}
-        			res += mid.poll();
-        			for(int j = 0 ; j < blank ; ++j) {
-        				res += " ";
-        			}
-        		}else {
-            		blank = L - count;
-            		num = mid.size()-1;
-            		mod = blank % num;
-            		blank = blank / num;
-            		for(int j = 0 ; j < num; ++j) {
-        				res += mid.poll();
-        				for(int n = 0; n < blank ; ++n) {
-        					res += " ";
-        				}
-        				if( j < mod) {
-        					res += " ";
-        				}        			
-            		}
-            		res += mid.poll();
-        		}
+
+	/**
+	 * @author yukunlee
+	 * @Description sqrtx 牛顿逼近法
+	 * @date 2018年11月28日
+	 * @param x
+	 * @return
+	 */
+	public int sqrt(int x) {
+		long n = x, a, b, c;
+		while (n * n > x) {
+			/*
+			 * a = (n*n-x); b = (n<<1); c = Math.round((float)a/b); n = n - c;
+			 */
+			n = (n + x / n) >> 1;
+		}
+		return (int) n;
+	}
+
+	public int[] plusOne(int[] digits) {
+		for (int i = digits.length - 1; i >= 0; --i) {
+			if (digits[i] == 9) {
+				digits[i] = 0;
+			} else {
+				digits[i]++;
+				break;
+			}
+		}
+		if (digits[0] == 0) {
+			int[] arr = new int[digits.length + 1];
+			arr[0] = 1;
+			return arr;
+		}
+		return digits;
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description text-justification
+	 * @date 2018年12月3日
+	 * @param words
+	 * @param L
+	 * @return
+	 */
+	public ArrayList<String> fullJustify(String[] words, int L) {
+		ArrayList<String> result = new ArrayList<>();
+		if (words.length == 0 || L == 0) {
+			result.add("");
+			return result;
+		}
+		Queue<String> mid = new LinkedList<>();
+		int count = 0, num = 0, blank = 0, mod = 0;
+		for (int i = 0; i <= words.length; ++i) {
+			if (i != words.length && (count + words[i].length()) <= L - mid.size()) {
+				count += words[i].length();
+				mid.add(words[i]);
+				continue;
+			} else if (count != 0 && mid.size() > 1) {
+				String res = "";
+				if (i == words.length) {
+					blank = L - count - mid.size() + 1;
+					num = mid.size() - 1;
+					for (int j = 0; j < num; ++j) {
+						res += mid.poll() + " ";
+					}
+					res += mid.poll();
+					for (int j = 0; j < blank; ++j) {
+						res += " ";
+					}
+				} else {
+					blank = L - count;
+					num = mid.size() - 1;
+					mod = blank % num;
+					blank = blank / num;
+					for (int j = 0; j < num; ++j) {
+						res += mid.poll();
+						for (int n = 0; n < blank; ++n) {
+							res += " ";
+						}
+						if (j < mod) {
+							res += " ";
+						}
+					}
+					res += mid.poll();
+				}
 				result.add(res);
 				count = 0;
 				--i;
-        	}else if(mid.size() == 1){
-        		String res = "";
-        		blank = L - count;
-        		res += mid.poll();
-        		for(int n = 0; n < blank ; ++n) {
+			} else if (mid.size() == 1) {
+				String res = "";
+				blank = L - count;
+				res += mid.poll();
+				for (int n = 0; n < blank; ++n) {
 					res += " ";
 				}
 				result.add(res);
 				count = 0;
 				--i;
-        	}
-        	
-        }
-    	return result;
+			}
+
+		}
+		return result;
+	}
+
+	public boolean isNumber(String s) {
+		try {
+			char c = s.charAt(s.length() - 1);
+			if (c == 'f' || c == 'F' || c == 'd' || c == 'D')
+				return false;
+			Double d = Double.valueOf(s);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	/**
+	 * @author yukunlee
+	 * @Description addBinary
+	 * @date 2018年12月4日
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public String addBinary(String a, String b) {
+		int alen = a.length() - 1, blen = b.length() - 1, f = 0;
+		String res = "";
+		while (alen >= 0 || blen >= 0 || f != 0) {
+			int sum = alen >= 0 ? a.charAt(alen--) - '0' : 0;
+			sum += blen >= 0 ? b.charAt(blen--) - '0' : 0;
+			sum += f;
+			res = (char)(sum % 2 + '0') + res;
+			f = sum >> 1;
+		}
+		return res;
+	}
+	
+    /**
+     * @author yukunlee
+     * @Description TODO
+     * @date 2018年12月4日
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] twoSum(int[] nums, int target) {
+    	Map<Integer, Integer> mp = new HashMap<>();
+    	int[] res = new int[2];
+    	for(int i = 0 ; i < nums.length ; ++i) {
+    		if(mp.containsKey(target - nums[i])){
+    			res[0] = mp.get(target - nums[i]);
+    			res[1] = i;
+    			return res;
+    		}
+    		if(!mp.containsKey(nums[i])) {
+    			mp.put(nums[i], i);
+    		}
+    	}
+        return null;
     }
-    
-    
 
 }
