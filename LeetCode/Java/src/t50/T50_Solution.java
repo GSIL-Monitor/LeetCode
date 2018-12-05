@@ -2,6 +2,8 @@ package t50;
 
 import java.util.*;
 
+import t17.ListNode;
+
 public class T50_Solution {
 	/**
 	 * @author yukunlee
@@ -382,5 +384,37 @@ public class T50_Solution {
     	}
         return null;
     }
-
+    
+    
+    /**
+     * @author yukunlee
+     * @Description mergeTwoLists
+     * @date 2018年12月5日
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode prehead = new ListNode(0);
+        ListNode cur = prehead;
+        while(true) {
+        	if(l1.val <= l2.val) {
+        		cur.next = l1;
+        		l1 = l1.next;
+        		cur = cur.next;
+        		if(l1 == null) {
+        			cur.next = l2;
+        			return prehead.next;
+        		}
+        	}else {
+        		cur.next = l2;
+        		l2 = l2.next;
+        		cur = cur.next;
+        		if(l2 == null) {
+        			cur.next = l1;
+        			return prehead.next;
+        		}
+        	}
+        }
+    } 
 }
