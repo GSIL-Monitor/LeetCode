@@ -1,7 +1,6 @@
 //#include <stdio.h>
 #include "pch.h"
 #include "test.h"
-#include <iostream>
 /*
 * 1.从特殊到一般
 * 2.本项目内的.h文件
@@ -19,13 +18,14 @@ test::test(int id , int num)
 
 }
 
+test::~test()
+{
+}
+
 int test::getId() {
-	std::cout <<id <<endl;
-	printf( "%d\n",id);
+	std::cout << id << endl;
+	printf("%d\n", id);
 	return id;
 }
 
 
-test::~test()
-{
-}

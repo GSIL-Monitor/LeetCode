@@ -21,6 +21,12 @@
     <ClInclude Include="test.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Solution.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +36,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Solution.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ListNode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
