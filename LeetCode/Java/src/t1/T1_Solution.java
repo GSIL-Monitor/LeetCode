@@ -52,6 +52,33 @@ public class T1_Solution {
 		
 		return distence;
 	}
+	
+	/**
+	 * @author yukunlee
+	 * @Description Bellman-Ford algorithm
+	 * @date 2018年12月13日
+	 * @param times
+	 * @param N
+	 * @param K
+	 * @return
+	 */
+	public int BellmanFordalgorithm(int[][] times, int N, int K) {
+		double[] distence = new double[N];
+		Arrays.fill(distence, Double.POSITIVE_INFINITY);
+		distence[K-1] = 0;
+		for(int i = 0 ; i < N ; ++i) {
+			for(int[] edge : times) {
+				distence[edge[1]-1] = Math.min(distence[edge[1]-1], distence[0]+edge[2]);
+			}
+		}
+		double res = Double.MIN_VALUE;
+		for(double i : distence) {
+			res = Math.max(res, i);
+		}
+		return res == Double.POSITIVE_INFINITY? -1 : (int)res ;
+	}
+
+	
 	/**
 	 * @author yukunlee
 	 * @Description  leetcode 743. Network Delay Time apply Dijkstra-algorithm
