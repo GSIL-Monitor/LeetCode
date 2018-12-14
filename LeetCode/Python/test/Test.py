@@ -106,7 +106,8 @@ print(str2)
 print(str3)
 print(str4)
 
-age=input("输入年龄：")
+#age=input("输入年龄：")
+age = 1
 age=int(age)
 if age>=18:
     print("大于18")
@@ -148,4 +149,7 @@ def fun3():
     v1+=1;
     print(v1)
     #fun1()
-fun3()
+
+
+print("test for vim")
+print("test for vim")
