@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 
+
+
+from testapp import testdb
+from Login import loginaction
+
 from . import view
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
     #url(r'^$', view.hello),
     url(r'^$', view.index),
+    url(r'^testdb$', testdb.testdb),
+    url(r'^signin$', loginaction.Signin),
 ]

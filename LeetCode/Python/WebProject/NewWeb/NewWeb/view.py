@@ -11,4 +11,7 @@ from django.shortcuts import render, redirect
 #     return HttpResponse(t1.render(context))
 
 def index(request):
-    return render(request,'index.html')
+    return render(request,'login.html')
+
+# def login(Request):
+#     return render(request,'login.html')

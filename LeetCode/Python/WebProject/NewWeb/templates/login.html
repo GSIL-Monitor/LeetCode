@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    
+        <p>Hello Word</p>
+        <form id = "formdata" action = "/signin" method = "post">
+        {% csrf_token %}
+        <input type="text" name="username" >
+        <input type="text" name = "password">
+        <input type = "submit" value="登陆">
+        <input type = "submit" value="注册">
+        </form>
+        <button type = "button" id = "sign" onclick="signin('qwe' , '123')" >注册1</button>
+
+
+<script language="JavaScript">
+    function signin(name , password) {
+        var data = {  
+         "username": name,  
+         "password": password,  
+        }  
+        alert(data.username)
+        $.ajax({
+            type: "POST",
+            url: "/signin",    
+            data: data,
+            success: function (result) {  
+                alert(result)
+            },
+        });
+    }
+    function signin_get(name , password) {
+           alert(1)
+        $.ajax({
+            type: "GET",
+            url: "signin/？username="+name+"$password="+password,    //后台处理函数的url和数据
+            success: function (result) {  //获取后台处理后传过来的result 
+                alert(result)
+            },
+        });
+    }
+</script>
+
+    </body>
+</html>
