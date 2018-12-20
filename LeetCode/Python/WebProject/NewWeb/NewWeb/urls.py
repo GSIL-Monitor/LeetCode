@@ -28,6 +28,8 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     #url(r'^$', view.hello),
     url(r'^$', view.index),
-    url(r'^testdb$', testdb.testdb),
-    url(r'^signin$', loginaction.Signin),
+    url(r'^testdb/$', testdb.testdb),
+    url(r'^login/$', loginaction.Login_post),
+    url(r'^signin/$', loginaction.Signin_post),
+    url(r'^signin_get/$', loginaction.Signin_get), #url(正则表达式,view函数,参数,别名,前缀)
 ]
