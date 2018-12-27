@@ -5,3 +5,10 @@ if not a and not b and not c\
     print("test")
 else:
     print("test else")
+
+list_test = []
+for i in range(1,10):
+    list_test.append(i)
+
+print(list_test)
+
