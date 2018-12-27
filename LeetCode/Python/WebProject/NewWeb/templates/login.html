@@ -21,6 +21,13 @@
         <input type="text" name = "password">
         <input id="signin" type = "submit" value="注册">
         </form>
+
+        <form id = "formdata_changepassword" action= "/changepassword/" method = "post">
+        {% csrf_token %}
+        <input type="text" name="username" >
+        <input type="text" name = "password">
+        <input id="signin" type = "submit" value="更改密码">
+        </form>
         
 
         <button type = "button" id = "signin1" onclick="signin('qwasdasdasdasdasdasde' , '123')" >注册1</button>

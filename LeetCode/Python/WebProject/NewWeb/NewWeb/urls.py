@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^login/$', loginaction.Login_post),
     url(r'^signin/$', loginaction.Signin_post),
     url(r'^signin_get/$', loginaction.Signin_get), #url(正则表达式,view函数,参数,别名,前缀)
+    url(r'^changepassword/$', loginaction.change_password),
 ]
