@@ -59,7 +59,7 @@ def Login_post(request):
 def change_password(request):
     new_username = request.POST.get('username')
     new_password = request.POST.get('password')
-    l = Login.objects.get(username=new_username)
+    l = Login.objects.filter(username=new_username).first()
     l.password = new_password
     l.save()
     return render(request , 'success.html')
