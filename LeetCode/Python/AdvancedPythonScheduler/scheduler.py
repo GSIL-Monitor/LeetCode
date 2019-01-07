@@ -21,7 +21,8 @@ def func_1():
         file.write('1')
         file.close
 
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(job_defaults= {'coalesce': False, 'max_instances': 2})
+
 # 在 2017-12-13 时刻运行一次 job_func 方法
 #scheduler .add_job(job_func, 'date', run_date=date(2017, 12, 13), args=['text'])
 # 在 2017-12-13 14:00:00 时刻运行一次 job_func 方法
