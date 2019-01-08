@@ -19,7 +19,6 @@ if __name__ == '__main__':
     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
     scheduler.add_job(func_1, 'interval', seconds=3)
-    scheduler.add_job(func_1, 'interval', seconds=3)
     try:
         # This is here to simulate application activity (which keeps the main thread alive).
         while True:
