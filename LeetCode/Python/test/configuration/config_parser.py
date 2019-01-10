@@ -36,12 +36,15 @@ config.set("configuration", "ops_event_notify_url",
 config.set("configuration", "des_file",
            "./conf/adapter_group.des;/ads-backend/stoppage_drill/conf/dsp_group.des;/ads-backend/stoppage_drill/conf/nginx_proxy_group.des;/ads-backend/stoppage_drill/conf/show_group.des;/ads-backend/stoppage_drill/conf/dsp_tracking_group.des;/ads-backend/stoppage_drill/conf/qisheng_tracking_group.des;/ads-backend/stoppage_drill/conf/exchange_group.des;/ads-backend/stoppage_drill/conf/tracking_log_server_group.des;/ads-backend/stoppage_drill/conf/pingback_collector_group.des;/ads-backend/stoppage_drill/conf/exchange_tracking_group.des;/ads-backend/stoppage_drill/conf/cookie_mapping_group.des;/ads-backend/stoppage_drill/conf/qixiao_ranking_group.des;/ads-backend/stoppage_drill/conf/dsp_recall_group.des;/ads-backend/stoppage_drill/conf/dsp_exporter_group.des;/ads-backend/stoppage_drill/conf/cpc_exporter_group.des;/ads-backend/stoppage_drill/conf/cpc_ranking_group.des;/ads-backend/stoppage_drill/conf/acg_exporter_group.des;/ads-backend/stoppage_drill/conf/qihui_tracking_redis_proxy_group.des;/ads-backend/stoppage_drill/conf/qisheng_exporter_group.des;/ads-backend/stoppage_drill/conf/qisheng_ranking_group.des;/ads-backend/stoppage_drill/conf/creative_dispatcher_group.des;/ads-backend/stoppage_drill/conf/show_leaf_group.des")
 
-# config.write(open("./conf/stoppage_drill.conf", "w"))
+print("config_parser.py1111")
+#config.write(open("./conf/stoppage_drill.conf", "w"))
+config.write(open('configuration/conf/stoppage_drill.conf', "w"))
 
 def GetConfigParser(file=''):
     g_config_parser = ConfigParser.ConfigParser()
     if file:
         g_config_parser.read(file)
+        print("file exist")
     for option in g_config_parser.options('configuration'):
         if config.get('configuration', option):
             config.set("configuration", option, g_config_parser.get('configuration', option))

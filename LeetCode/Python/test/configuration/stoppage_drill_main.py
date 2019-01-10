@@ -53,5 +53,5 @@ def main():
 if __name__ == "__main__":
 
     logging.warning('Good luck!!!')
-    ParseConfiguration(GetConfigParser("./conf/stoppage_drill.conf"))
+    ParseConfiguration(GetConfigParser("configuration/conf/stoppage_drill.conf"))
     sys.exit(main())
